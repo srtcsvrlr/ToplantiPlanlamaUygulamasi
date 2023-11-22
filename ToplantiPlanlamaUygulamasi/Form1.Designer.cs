@@ -1,6 +1,6 @@
 ﻿namespace ToplantiPlanlamaUygulamasi
 {
-    partial class Form1
+    partial class frmToplantiUygulamasi
     {
         /// <summary>
         ///  Required designer variable.
@@ -28,44 +28,85 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnGiris = new System.Windows.Forms.Button();
+            this.txtKullaniciAdi = new System.Windows.Forms.TextBox();
+            this.lblKullaniciAdi = new System.Windows.Forms.Label();
+            this.lblSifre = new System.Windows.Forms.Label();
+            this.txtSifre = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // button1
+            // btnGiris
             // 
-            this.button1.Location = new System.Drawing.Point(134, 76);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(94, 29);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnGiris.Location = new System.Drawing.Point(269, 227);
+            this.btnGiris.Name = "btnGiris";
+            this.btnGiris.Size = new System.Drawing.Size(216, 29);
+            this.btnGiris.TabIndex = 0;
+            this.btnGiris.Text = "Giriş Yap";
+            this.btnGiris.UseVisualStyleBackColor = true;
+            this.btnGiris.Click += new System.EventHandler(this.btnGiris_Click);
             // 
-            // button2
+            // txtKullaniciAdi
             // 
-            this.button2.Location = new System.Drawing.Point(372, 176);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(94, 29);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
+            this.txtKullaniciAdi.Location = new System.Drawing.Point(269, 80);
+            this.txtKullaniciAdi.Name = "txtKullaniciAdi";
+            this.txtKullaniciAdi.Size = new System.Drawing.Size(306, 27);
+            this.txtKullaniciAdi.TabIndex = 2;
+            this.txtKullaniciAdi.TextChanged += new System.EventHandler(this.txtKullaniciAdi_TextChanged);
             // 
-            // Form1
+            // lblKullaniciAdi
+            // 
+            this.lblKullaniciAdi.AutoSize = true;
+            this.lblKullaniciAdi.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lblKullaniciAdi.Location = new System.Drawing.Point(159, 87);
+            this.lblKullaniciAdi.Name = "lblKullaniciAdi";
+            this.lblKullaniciAdi.Size = new System.Drawing.Size(99, 20);
+            this.lblKullaniciAdi.TabIndex = 3;
+            this.lblKullaniciAdi.Text = "Kullanıcı Adı :";
+            this.lblKullaniciAdi.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // lblSifre
+            // 
+            this.lblSifre.AutoSize = true;
+            this.lblSifre.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lblSifre.Location = new System.Drawing.Point(159, 144);
+            this.lblSifre.Name = "lblSifre";
+            this.lblSifre.Size = new System.Drawing.Size(46, 20);
+            this.lblSifre.TabIndex = 4;
+            this.lblSifre.Text = "Şifre :";
+            // 
+            // txtSifre
+            // 
+            this.txtSifre.Location = new System.Drawing.Point(269, 137);
+            this.txtSifre.Name = "txtSifre";
+            this.txtSifre.Size = new System.Drawing.Size(306, 27);
+            this.txtSifre.TabIndex = 5;
+            this.txtSifre.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // frmToplantiUygulamasi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.BackColor = System.Drawing.Color.Navy;
+            this.ClientSize = new System.Drawing.Size(877, 470);
+            this.Controls.Add(this.txtSifre);
+            this.Controls.Add(this.lblSifre);
+            this.Controls.Add(this.lblKullaniciAdi);
+            this.Controls.Add(this.txtKullaniciAdi);
+            this.Controls.Add(this.btnGiris);
+            this.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.Name = "frmToplantiUygulamasi";
+            this.Text = "Toplantı Düzenleme Uygulaması";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
-        private Button button1;
-        private Button button2;
+        private Button btnGiris;
+        private TextBox txtKullaniciAdi;
+        private Label lblKullaniciAdi;
+        private Label lblSifre;
+        private TextBox txtSifre;
     }
 }
