@@ -80,6 +80,7 @@
             this.txtSifre.Name = "txtSifre";
             this.txtSifre.Size = new System.Drawing.Size(306, 27);
             this.txtSifre.TabIndex = 5;
+            this.txtSifre.UseSystemPasswordChar = true;
             this.txtSifre.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // frmToplantiUygulamasi
@@ -87,7 +88,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Navy;
-            this.ClientSize = new System.Drawing.Size(877, 470);
+            this.ClientSize = new System.Drawing.Size(1043, 551);
             this.Controls.Add(this.txtSifre);
             this.Controls.Add(this.lblSifre);
             this.Controls.Add(this.lblKullaniciAdi);
@@ -95,7 +96,9 @@
             this.Controls.Add(this.btnGiris);
             this.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.Name = "frmToplantiUygulamasi";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Toplantı Düzenleme Uygulaması";
+            this.Load += new System.EventHandler(this.frmToplantiUygulamasi_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

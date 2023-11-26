@@ -27,5 +27,10 @@ namespace ToplantiPlanlamaUygulamasi
         {
 
         }
+
+        private void frmToplantiUygulamasi_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
