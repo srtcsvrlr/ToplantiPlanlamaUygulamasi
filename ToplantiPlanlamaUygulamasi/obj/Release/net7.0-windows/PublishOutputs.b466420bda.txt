@@ -1,0 +1,5 @@
+C:\Users\srtcs\OneDrive\Masaüstü\Codes\ToplantiPlanlamaUygulamasi\ToplantiPlanlamaUygulamasi\bin\Release\net7.0-windows\app.publish\ToplantiPlanlamaUygulamasi.exe
+C:\Users\srtcs\OneDrive\Masaüstü\Codes\ToplantiPlanlamaUygulamasi\ToplantiPlanlamaUygulamasi\bin\Release\net7.0-windows\app.publish\ToplantiPlanlamaUygulamasi.dll
+C:\Users\srtcs\OneDrive\Masaüstü\Codes\ToplantiPlanlamaUygulamasi\ToplantiPlanlamaUygulamasi\bin\Release\net7.0-windows\app.publish\ToplantiPlanlamaUygulamasi.deps.json
+C:\Users\srtcs\OneDrive\Masaüstü\Codes\ToplantiPlanlamaUygulamasi\ToplantiPlanlamaUygulamasi\bin\Release\net7.0-windows\app.publish\ToplantiPlanlamaUygulamasi.runtimeconfig.json
+C:\Users\srtcs\OneDrive\Masaüstü\Codes\ToplantiPlanlamaUygulamasi\ToplantiPlanlamaUygulamasi\bin\Release\net7.0-windows\app.publish\ToplantiPlanlamaUygulamasi.pdb
