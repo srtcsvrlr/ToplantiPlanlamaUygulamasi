@@ -33,7 +33,7 @@
             this.lblKullaniciAdi = new System.Windows.Forms.Label();
             this.lblSifre = new System.Windows.Forms.Label();
             this.txtSifre = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblGiris = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnGiris
@@ -84,15 +84,14 @@
             this.txtSifre.UseSystemPasswordChar = true;
             this.txtSifre.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
-            // label1
+            // lblGiris
             // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.AliceBlue;
-            this.label1.Location = new System.Drawing.Point(732, 79);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(50, 20);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "label1";
+            this.lblGiris.BackColor = System.Drawing.Color.AliceBlue;
+            this.lblGiris.Location = new System.Drawing.Point(269, 41);
+            this.lblGiris.Name = "lblGiris";
+            this.lblGiris.Size = new System.Drawing.Size(180, 20);
+            this.lblGiris.TabIndex = 6;
+            this.lblGiris.Text = "label1";
             // 
             // frmToplantiUygulamasi
             // 
@@ -100,7 +99,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Navy;
             this.ClientSize = new System.Drawing.Size(1043, 551);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblGiris);
             this.Controls.Add(this.txtSifre);
             this.Controls.Add(this.lblSifre);
             this.Controls.Add(this.lblKullaniciAdi);
@@ -123,6 +122,6 @@
         private Label lblKullaniciAdi;
         private Label lblSifre;
         private TextBox txtSifre;
-        private Label label1;
+        private Label lblGiris;
     }
 }

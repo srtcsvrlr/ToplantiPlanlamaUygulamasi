@@ -1,4 +1,7 @@
+using Microsoft.VisualBasic.Devices;
+using Newtonsoft.Json;
 using System.Runtime.InteropServices;
+using System.Text.Json.Nodes;
 
 namespace ToplantiPlanlamaUygulamasi
 {
@@ -9,12 +12,12 @@ namespace ToplantiPlanlamaUygulamasi
             InitializeComponent();
         }
 
-
+         // TO DO örnek
         public  void WriteData(string str, string sifre)
         {
             //StreamWriter sw = new StreamWriter(kullaniciAdi + ".txt", true);
 
-            StreamWriter sw = new StreamWriter("Ali.txt", true);
+            StreamWriter sw = new StreamWriter("dosyalar/Ali.txt");
 
 
 
@@ -28,9 +31,10 @@ namespace ToplantiPlanlamaUygulamasi
             // To close the stream 
             sw.Close();
         }
-        public  void ReadData()
+        public void ReadData()
         {
-            StreamReader sr = new StreamReader("Ali.txt");
+            string aliPath = @"dosyalar\Ali";
+            StreamReader sr = new StreamReader(Path.Combine(aliPath, "KullaniciBilgileri.txt"));
 
             // This is use to specify from where  
             // to start reading input stream 
@@ -40,7 +44,7 @@ namespace ToplantiPlanlamaUygulamasi
             string str = sr.ReadLine();
 
             // To read the whole file line by line 
-            label1.Text = str;
+            lblGiris.Text = str;
             // to close the stream 
             sr.Close();
         }
@@ -49,11 +53,26 @@ namespace ToplantiPlanlamaUygulamasi
 
         private void btnGiris_Click(object sender, EventArgs e)
         {
+            lblGiris.Text = string.Empty;
             string kullaniciAdi = txtKullaniciAdi.Text;
             string sifre = txtSifre.Text;
-            WriteData(kullaniciAdi , sifre);
-            ReadData();
+            //WriteData(kullaniciAdi , sifre);
+            string jsonKullaniciBilgisi = ReadUserData();
+            Kullanici user = JsonConvert.DeserializeObject<Kullanici>(jsonKullaniciBilgisi);
 
+            if (!(kullaniciAdi == user.Name && sifre == user.Password)) 
+            {
+                lblGiris.Text = "Giriþ Baþarsýz!";
+            }
+            this.Hide();
+
+            KullaniciPaneli kullaniciPaneli = new KullaniciPaneli();
+            kullaniciPaneli.Show();
+        }
+
+        public string ReadUserData()
+        {
+            return "{ \"name\": \"Ali\",\"password\": \"123ali\" }";
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -76,7 +95,6 @@ namespace ToplantiPlanlamaUygulamasi
 
         }
 
-       
        
     }
 }

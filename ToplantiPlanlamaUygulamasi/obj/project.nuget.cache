@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "5jc0WcvPSmSFQ9vxgGJ4zjxZjY0OwxxOnqB8eiNd1rAM6c6euU7KJleybQIW52YL+52MET2Z5qL1IanyTRHp2A==",
+  "dgSpecHash": "+a/AN5R3GE2YEYDrU2c+KyQeamHPtmXElY8hiQsdRCjkqBd+GlF58DKWodjMfKvjm1iRlbLpuWd0xKHaRTFg/A==",
   "success": true,
   "projectFilePath": "C:\\Users\\srtcs\\OneDrive\\Masaüstü\\Codes\\ToplantiPlanlamaUygulamasi\\ToplantiPlanlamaUygulamasi\\ToplantiPlanlamaUygulamasi.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\srtcs\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
+  ],
   "logs": []
 }

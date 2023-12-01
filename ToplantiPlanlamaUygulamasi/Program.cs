@@ -8,7 +8,21 @@ namespace ToplantiPlanlamaUygulamasi
         [STAThread]
         static void Main()
         {
-            // To customize application configuration such as set high DPI settings or default font,
+            // TO DO klasörleri kontrol et , dosyalarý kontrol et
+            string aliPath = @"dosyalar\Ali";
+            Directory.CreateDirectory(@aliPath);
+            File.Create(Path.Combine(aliPath, "KullaniciBilgileri.txt"));
+
+            Directory.CreateDirectory(@"dosyalar\Ayse");
+            //File.Create(@"C:\Temp.txt");
+
+            Directory.CreateDirectory(@"dosyalar\Mehmet");
+            //File.Create(@"C:\Temp.txt");
+
+            Directory.CreateDirectory(@"dosyalar\Merve");
+            //File.Create(@"C:\Temp.txt");
+
+
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             Application.Run(new frmToplantiUygulamasi());

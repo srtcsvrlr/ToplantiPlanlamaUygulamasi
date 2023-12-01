@@ -16,3 +16,6 @@ C:\Users\srtcs\OneDrive\Masaüstü\Codes\ToplantiPlanlamaUygulamasi\ToplantiPlan
 C:\Users\srtcs\OneDrive\Masaüstü\Codes\ToplantiPlanlamaUygulamasi\ToplantiPlanlamaUygulamasi\obj\Debug\net7.0-windows\ref\ToplantiPlanlamaUygulamasi.dll
 C:\Users\srtcs\OneDrive\Masaüstü\Codes\ToplantiPlanlamaUygulamasi\ToplantiPlanlamaUygulamasi\obj\Debug\net7.0-windows\ToplantiPlanlamaUygulamasi.frmToplantiUygulamasi.resources
 C:\Users\srtcs\OneDrive\Masaüstü\Codes\ToplantiPlanlamaUygulamasi\ToplantiPlanlamaUygulamasi\obj\Debug\net7.0-windows\ToplantiPlanlamaUygulamasi.Properties.Resources.resources
+C:\Users\srtcs\OneDrive\Masaüstü\Codes\ToplantiPlanlamaUygulamasi\ToplantiPlanlamaUygulamasi\bin\Debug\net7.0-windows\Newtonsoft.Json.dll
+C:\Users\srtcs\OneDrive\Masaüstü\Codes\ToplantiPlanlamaUygulamasi\ToplantiPlanlamaUygulamasi\obj\Debug\net7.0-windows\ToplantiPlanlamaUygulamasi.csproj.CopyComplete
+C:\Users\srtcs\OneDrive\Masaüstü\Codes\ToplantiPlanlamaUygulamasi\ToplantiPlanlamaUygulamasi\obj\Debug\net7.0-windows\ToplantiPlanlamaUygulamasi.KullaniciPaneli.resources
