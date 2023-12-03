@@ -13,14 +13,21 @@ namespace ToplantiPlanlamaUygulamasi
             Directory.CreateDirectory(@aliPath);
             File.Create(Path.Combine(aliPath, "KullaniciBilgileri.txt"));
 
-            Directory.CreateDirectory(@"dosyalar\Ayse");
-            //File.Create(@"C:\Temp.txt");
 
-            Directory.CreateDirectory(@"dosyalar\Mehmet");
-            //File.Create(@"C:\Temp.txt");
+            string aysePath = @"dosyalar\Ayse";
+            Directory.CreateDirectory(@aysePath);
+            File.Create(Path.Combine(aysePath, "KullaniciBilgileri.txt"));
 
-            Directory.CreateDirectory(@"dosyalar\Merve");
-            //File.Create(@"C:\Temp.txt");
+
+            string mehmetPath = @"dosyalar\Mehmet";
+            Directory.CreateDirectory(@mehmetPath);
+            File.Create(Path.Combine(mehmetPath, "KullaniciBilgileri.txt"));
+
+
+            string mervePath = @"dosyalar\Merve";
+            Directory.CreateDirectory(mervePath);
+            File.Create(Path.Combine(mervePath, "KullaniciBilgileri.txt"));
+            
 
 
             // see https://aka.ms/applicationconfiguration.
