@@ -29,8 +29,6 @@ namespace ToplantiPlanlamaUygulamasi
             File.Create(Path.Combine(mervePath, "KullaniciBilgileri.txt"));
             
 
-
-            // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             Application.Run(new frmToplantiUygulamasi());
         }

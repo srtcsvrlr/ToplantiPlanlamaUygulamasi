@@ -59,16 +59,19 @@ namespace ToplantiPlanlamaUygulamasi
             //WriteData(kullaniciAdi , sifre);
             string jsonKullaniciBilgisi = ReadUserData();
             Kullanici user = JsonConvert.DeserializeObject<Kullanici>(jsonKullaniciBilgisi);
+          
 
-            if (!(kullaniciAdi == user.Name && sifre == user.Password)) 
-            {
-                lblGiris.Text = "Giriþ Baþarsýz!";
-            }
+
+
+            //if (!(kullaniciAdi == user.Name && sifre == user.Password))
+            //{
+            //    lblGiris.Text = "Giriþ Baþarsýz!";
+            //}
             this.Hide();
 
             KullaniciPaneli kullaniciPaneli = new KullaniciPaneli();
             kullaniciPaneli.Show();
-        }
+            }
 
         public string ReadUserData()
         {
