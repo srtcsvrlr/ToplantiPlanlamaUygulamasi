@@ -9,7 +9,7 @@ namespace ToplantiPlanlamaUygulamasi
     public class Toplanti
     {
         public Toplanti() {
-            Baslik = "Toplanti-1";
+            Baslik = "Toplanti-1";           
         }
 
         public string Baslik { get; set; }

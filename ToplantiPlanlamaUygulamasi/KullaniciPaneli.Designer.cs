@@ -32,17 +32,21 @@
             this.ToplantiOlustur = new System.Windows.Forms.ToolStripMenuItem();
             this.ToplantiSec = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlKullanici = new System.Windows.Forms.Panel();
+            this.ToplantiListesi = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
             // 
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ToplantiListesi,
             this.ToplantiOlustur,
             this.ToplantiSec});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(537, 24);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(7, 3, 0, 3);
+            this.menuStrip1.Size = new System.Drawing.Size(709, 30);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
@@ -50,33 +54,40 @@
             // ToplantiOlustur
             // 
             this.ToplantiOlustur.Name = "ToplantiOlustur";
-            this.ToplantiOlustur.Size = new System.Drawing.Size(103, 20);
+            this.ToplantiOlustur.Size = new System.Drawing.Size(128, 24);
             this.ToplantiOlustur.Text = "Toplantı Oluştur";
             this.ToplantiOlustur.Click += new System.EventHandler(this.toplantiOlusturToolStripMenuItem_Click);
             // 
             // ToplantiSec
             // 
             this.ToplantiSec.Name = "ToplantiSec";
-            this.ToplantiSec.Size = new System.Drawing.Size(82, 20);
+            this.ToplantiSec.Size = new System.Drawing.Size(104, 24);
             this.ToplantiSec.Text = "Toplantı Seç";
             // 
             // pnlKullanici
             // 
-            this.pnlKullanici.Location = new System.Drawing.Point(0, 27);
+            this.pnlKullanici.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlKullanici.Location = new System.Drawing.Point(0, 30);
+            this.pnlKullanici.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pnlKullanici.Name = "pnlKullanici";
-            this.pnlKullanici.Size = new System.Drawing.Size(537, 260);
+            this.pnlKullanici.Size = new System.Drawing.Size(709, 623);
             this.pnlKullanici.TabIndex = 2;
+            // 
+            // ToplantiListesi
+            // 
+            this.ToplantiListesi.Name = "ToplantiListesi";
+            this.ToplantiListesi.Size = new System.Drawing.Size(121, 24);
+            this.ToplantiListesi.Text = "Toplantı Listesi";
             // 
             // KullaniciPaneli
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(537, 289);
+            this.ClientSize = new System.Drawing.Size(709, 653);
             this.Controls.Add(this.pnlKullanici);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "KullaniciPaneli";
             this.Text = "Toplantı Düzenleme Uygulaması || Kullanıcı Paneli";
             this.Load += new System.EventHandler(this.KullaniciPaneli_Load);
@@ -95,5 +106,6 @@
         private ToolStripMenuItem ToplantiOlustur;
         private ToolStripMenuItem ToplantiSec;
         private Panel pnlKullanici;
+        private ToolStripMenuItem ToplantiListesi;
     }
 }

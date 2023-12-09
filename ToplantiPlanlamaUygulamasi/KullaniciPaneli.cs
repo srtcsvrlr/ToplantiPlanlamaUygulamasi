@@ -35,25 +35,43 @@ namespace ToplantiPlanlamaUygulamasi
         private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
             pnlKullanici.Controls.Clear();
-            if (e.ClickedItem.Name.Equals("ToplantiOlustur"))
+            switch (e.ClickedItem.Name)
             {
-                //label1.Text = e.ClickedItem.Name;
-                ToplantiOlustur objForm = new ToplantiOlustur();
-                objForm.TopLevel = false;
-                pnlKullanici.Controls.Add(objForm);
-                objForm.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-                objForm.Dock = DockStyle.Fill;
-                objForm.Show();
+                case "ToplantiOlustur":
+                    {
+                        ToplantiOlustur objForm = new ToplantiOlustur();
+                        objForm.TopLevel = false;
+                        pnlKullanici.Controls.Add(objForm);
+                        objForm.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+                        objForm.Dock = DockStyle.Fill;
+                        objForm.Show();
+                    }
+                    break;
+                case "ToplantiSec":
+                    {
+                        ToplantiSec objForm = new ToplantiSec();
+                        objForm.TopLevel = false;
+                        pnlKullanici.Controls.Add(objForm);
+                        objForm.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+                        objForm.Dock = DockStyle.Fill;
+                        objForm.Show();
+                    }
+                    break;
+                case "ToplantiListesi":
+                    {
+                        ToplantiBilgileri objForm = new ToplantiBilgileri();
+                        objForm.TopLevel = false;
+                        pnlKullanici.Controls.Add(objForm);
+                        objForm.FormBorderStyle = FormBorderStyle.None;
+                        objForm.Dock = DockStyle.Fill;
+                        objForm.Show();
+                    }
+                    break;
+
+
             }
-            else {
-                //label1.Text = e.ClickedItem.Name;
-                ToplantiSec objForm = new ToplantiSec();
-                objForm.TopLevel = false;
-                pnlKullanici.Controls.Add(objForm);
-                objForm.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-                objForm.Dock = DockStyle.Fill;
-                objForm.Show();
-            }
+
+
         }
     }
 }
