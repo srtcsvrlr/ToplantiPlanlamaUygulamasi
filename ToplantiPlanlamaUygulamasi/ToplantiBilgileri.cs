@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,6 +14,8 @@ namespace ToplantiPlanlamaUygulamasi
 {
     public partial class ToplantiBilgileri : Form
     {
+        public DateTime _currDate { get; set; }
+        public Toplanti _toplanti { get; set; }
         public ToplantiBilgileri()
         {
             InitializeComponent();
@@ -20,20 +23,42 @@ namespace ToplantiPlanlamaUygulamasi
 
         private void ToplantiBilgileri_Load(object sender, EventArgs e)
         {
+            _currDate = DateTime.Now;
             TakvimKutulariniOlustur();
-            //KutulariDoldur();
+            if (!ToplantiBilgileriniGetir())
+                return;
+            KutulariDoldur(_currDate);
+        }
+
+        // Tüm kullanıcıların uygun olduğu tarihleri panelde gösterir
+        private bool ToplantiBilgileriniGetir()
+        {
+            string jsonToplantiBilgileri = ReadToplantiBilgileri();
+            _toplanti = JsonConvert.DeserializeObject<Toplanti>(jsonToplantiBilgileri);
+            if (_toplanti == null)
+            {
+                MessageBox.Show("Toplanti Bilgileri Alınamadı.");
+                return false;
+            }
+
+            txtBaslik.Text = _toplanti.Baslik;
+            rctxtAciklama.Text = _toplanti.Aciklama;
+            txtToplantiKodu.Text = _toplanti.ToplantiKodu;
+            foreach (var item in _toplanti.KatilimciListesi)
+            {
+                lsbKatilimcilar.Items.Add(item);
+            }
+
+            return true;
+        }
+
+        public string ReadToplantiBilgileri()
+        {
+            return DosyaIslemleri.ReadData("ToplantiBilgileri.txt");
         }
 
         public void TakvimKutulariniOlustur()
         {
-            var ayinIlkGunu = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
-            var ayinIlkGunuIndeksi = (int)ayinIlkGunu.DayOfWeek;
-
-            var startDate = ayinIlkGunu.AddDays(-(ayinIlkGunuIndeksi - 1));
-
-
-            var currDate = startDate;
-
             var c = 0;
             for (int i = 0; i < 6; i++)
             {
@@ -44,46 +69,84 @@ namespace ToplantiPlanlamaUygulamasi
                     p.Width = 100; p.Height = 100;
                     p.Name = "pnlTakvimGunu" + c;
                     p.Location = new Point(
-                        80 + a * 100 + (a == 0 ? 0 : 7 * a), 160 + 100 * i + (i == 0 ? 0 : 7 * i));
+                         90 + a * 100 + (a == 0 ? 0 : 7 * a), 250 + 100 * i + (i == 0 ? 0 : 7 * i));
                     p.Visible = true; p.BorderStyle = BorderStyle.FixedSingle;
 
                     Controls.Add(p);
-                    KutulariDoldur(p, currDate, c++);
 
-                    currDate = currDate.AddDays(1);
                 }
             }
 
-            this.ParentForm.Height = 900;
-            this.ParentForm.Width = 900;
         }
 
-
-        public void KutulariDoldur(Control ctrl, DateTime currDate, int i)
+        public void KutulariDoldur(DateTime date)
         {
 
+            lblAyYilBilgisi.Text = date.ToString("MMMM") + " " + date.ToString("yyyy");
+            var ayinIlkGunu = new DateTime(date.Year, date.Month, 1);
+            var ayinIlkGunuIndeksi = (int)ayinIlkGunu.DayOfWeek;
 
+            var startDate = ayinIlkGunu.AddDays(-(ayinIlkGunuIndeksi - 1));
+            var currDate = startDate;
 
+            for (int i = 0; i < 42; i++)
+            {
+                var ctrl = Controls["pnlTakvimGunu" + (i + 1)];
+                if (ctrl != null)
+                {
+                    ctrl.Controls.Clear();
+                    Label dynamiclabel = new Label();
+                    dynamiclabel.Location = new Point(10, 10);
+                    dynamiclabel.Name = "lbl_ques" + i;
+                    dynamiclabel.Text = currDate.ToString("dd");
+                    dynamiclabel.Size = new System.Drawing.Size(900, 26);
+                    dynamiclabel.Font = new Font("Arial", 9, FontStyle.Regular);
+                    ctrl.Controls.Add(dynamiclabel);
+                    // uygun toplantı tarihlerindeki katılımcıları görmek için buton ekle
+                    if (_toplanti.UygunToplantiTarihleri.Any(s => s.Equals(currDate)))
+                    {
+                        Button dynamicButton = new Button();
+                        dynamicButton.Location = new Point(10, 50);
+                        dynamicButton.Name = "btnKatilimcilar_" + currDate.ToString("yyyy-MM-dd");
+                        dynamicButton.Text = "Katılımcılar";
+                        dynamicButton.Size = new System.Drawing.Size(50, 26);
+                        dynamicButton.Font = new Font("Arial", 9, FontStyle.Regular);
 
-            Label dynamiclabel = new Label();
-            dynamiclabel.Location = new Point(10, 10);
-            dynamiclabel.Name = "lbl_ques" + i;
-            dynamiclabel.Text = currDate.ToString("dd");
-            dynamiclabel.Size = new System.Drawing.Size(900, 26);
-            dynamiclabel.Font = new Font("Arial", 9, FontStyle.Regular);
-            ctrl.Controls.Add(dynamiclabel);
-            Button dynamicButton = new Button();
-            dynamicButton.Location = new Point(10, 50);
-            dynamicButton.Name = "btnSec_" + currDate.ToString("yyyy-MM-dd");
-            dynamicButton.Text = "Seç";
-            dynamicButton.Size = new System.Drawing.Size(50, 26);
-            dynamicButton.Font = new Font("Arial", 9, FontStyle.Regular);
-            ctrl.Controls.Add(dynamicButton);
+                        dynamicButton.Click += new EventHandler(dynamicButton_Click);
+                        ctrl.Controls.Add(dynamicButton);
+                    }
+                }
+                currDate = currDate.AddDays(1);
+
+            }
         }
 
+        private void dynamicButton_Click(object sender, EventArgs e)
+        {
+            Button cb = (Button)sender;
+            string strName = cb.AccessibleName;
+            var strTarih = strName.Split("_")[1];
+            DateTime selectedDate = Convert.ToDateTime(strTarih);
 
+            IlgiliTarihtekiKatilimcilariGetir(selectedDate);
+        }
 
+        private void IlgiliTarihtekiKatilimcilariGetir(DateTime selectedDate)
+        {
+            MessageBox.Show(selectedDate.ToString("yyyy-MM-dd"));
+            return;
+        }
 
+        private void btnOncekiAy_Click(object sender, EventArgs e)
+        {
+            _currDate = _currDate.AddMonths(-1);
+            KutulariDoldur(_currDate);
+        }
 
+        private void btnSonrakiAy_Click(object sender, EventArgs e)
+        {
+            _currDate = _currDate.AddMonths(1);
+            KutulariDoldur(_currDate);
+        }
     }
 }

@@ -38,7 +38,7 @@
             // 
             // btnGiris
             // 
-            this.btnGiris.Location = new System.Drawing.Point(130, 164);
+            this.btnGiris.Location = new System.Drawing.Point(126, 164);
             this.btnGiris.Name = "btnGiris";
             this.btnGiris.Size = new System.Drawing.Size(123, 36);
             this.btnGiris.TabIndex = 0;
@@ -48,7 +48,7 @@
             // 
             // txtKullaniciAdi
             // 
-            this.txtKullaniciAdi.Location = new System.Drawing.Point(130, 57);
+            this.txtKullaniciAdi.Location = new System.Drawing.Point(126, 57);
             this.txtKullaniciAdi.Name = "txtKullaniciAdi";
             this.txtKullaniciAdi.Size = new System.Drawing.Size(205, 27);
             this.txtKullaniciAdi.TabIndex = 2;
@@ -77,7 +77,7 @@
             // 
             // txtSifre
             // 
-            this.txtSifre.Location = new System.Drawing.Point(130, 115);
+            this.txtSifre.Location = new System.Drawing.Point(126, 115);
             this.txtSifre.Name = "txtSifre";
             this.txtSifre.Size = new System.Drawing.Size(205, 27);
             this.txtSifre.TabIndex = 5;

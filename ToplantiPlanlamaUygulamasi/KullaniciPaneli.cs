@@ -57,7 +57,7 @@ namespace ToplantiPlanlamaUygulamasi
                         objForm.Show();
                     }
                     break;
-                case "ToplantiListesi":
+                case "ToplantiBilgileri":
                     {
                         ToplantiBilgileri objForm = new ToplantiBilgileri();
                         objForm.TopLevel = false;

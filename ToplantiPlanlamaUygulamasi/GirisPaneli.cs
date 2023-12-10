@@ -14,13 +14,9 @@ namespace ToplantiPlanlamaUygulamasi
 
         // TO DO örnek
 
-
-
-
-
         public string ReadUserData()
         {
-            return DosyaIslemleri.ReadData("Ali", "KullaniciBilgileri.txt");
+            return DosyaIslemleri.ReadData("YoneticiBilgileri.txt");
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -52,12 +48,9 @@ namespace ToplantiPlanlamaUygulamasi
             //string jsonKullaniciBilgisi = ReadUserData();
             //Kullanici user = JsonConvert.DeserializeObject<Kullanici>(jsonKullaniciBilgisi);
 
-
-
-
             //if (!(kullaniciAdi == user.Name && sifre == user.Password))
             //{
-            //    lblGiris.Text = "Giriþ Baþarsýz!";
+            //    lblGiris.Text = "Kullanici Adý veya Þifre Hatalý!";
             //    return;
             //}
             this.Hide();

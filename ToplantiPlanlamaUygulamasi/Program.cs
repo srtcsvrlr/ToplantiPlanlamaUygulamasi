@@ -11,10 +11,10 @@ namespace ToplantiPlanlamaUygulamasi
         static void Main()
         {
             // TO DO klasörleri kontrol et , dosyalarý kontrol et
-            string aliPath = @"dosyalar\Ali";
+            string aliPath = @"dosyalar";
             Directory.CreateDirectory(@aliPath);
 
-            FileStream stream = File.Create(Path.Combine(aliPath, "KullaniciBilgileri.txt"));
+            FileStream stream = File.Create(Path.Combine(aliPath, "YoneticiBilgileri.txt"));
             stream.Close();
 
             Kullanici aliKullanici = new Kullanici()
@@ -25,10 +25,19 @@ namespace ToplantiPlanlamaUygulamasi
 
             var aliJson = JsonConvert.SerializeObject(aliKullanici);
 
-            DosyaIslemleri.WriteData("Ali", "KullaniciBilgileri.txt", aliJson);
+            DosyaIslemleri.WriteData("YoneticiBilgileri.txt", aliJson);
 
-            FileStream stream2 = File.Create(Path.Combine(aliPath, "ToplantiBilgisi.txt"));
-            stream2.Close();
+            if (!File.Exists(Path.Combine(aliPath, "ToplantiBilgileri.txt")))
+            {
+                FileStream stream2 = File.Create(Path.Combine(aliPath, "ToplantiBilgileri.txt"));
+                stream2.Close();
+            }
+
+            if (!File.Exists(Path.Combine(aliPath, "KatilimciBilgileri.txt")))
+            {
+                FileStream stream2 = File.Create(Path.Combine(aliPath, "KatilimciBilgileri.txt"));
+                stream2.Close();
+            }
 
             //string aysePath = @"dosyalar\Ayse";
             //Directory.CreateDirectory(@aysePath);

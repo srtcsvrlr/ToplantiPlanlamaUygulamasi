@@ -1,0 +1,1 @@
+{"Baslik":"Toplanti -3","Aciklama":"Toplanti -3","ToplantiKodu":"FWNTWWL96J","KatilimciListesi":["Ali","Ayşe"],"UygunToplantiTarihleri":["2023-12-19T00:00:00","2023-12-26T00:00:00","2023-12-25T00:00:00","2023-12-18T00:00:00"]}

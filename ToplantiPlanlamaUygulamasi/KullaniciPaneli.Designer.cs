@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.ToplantiBilgileri = new System.Windows.Forms.ToolStripMenuItem();
             this.ToplantiOlustur = new System.Windows.Forms.ToolStripMenuItem();
             this.ToplantiSec = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlKullanici = new System.Windows.Forms.Panel();
-            this.ToplantiListesi = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -40,7 +40,7 @@
             // 
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ToplantiListesi,
+            this.ToplantiBilgileri,
             this.ToplantiOlustur,
             this.ToplantiSec});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
@@ -50,6 +50,12 @@
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
+            // 
+            // ToplantiBilgileri
+            // 
+            this.ToplantiBilgileri.Name = "ToplantiBilgileri";
+            this.ToplantiBilgileri.Size = new System.Drawing.Size(132, 24);
+            this.ToplantiBilgileri.Text = "Toplantı Bilgileri";
             // 
             // ToplantiOlustur
             // 
@@ -73,12 +79,6 @@
             this.pnlKullanici.Size = new System.Drawing.Size(709, 623);
             this.pnlKullanici.TabIndex = 2;
             // 
-            // ToplantiListesi
-            // 
-            this.ToplantiListesi.Name = "ToplantiListesi";
-            this.ToplantiListesi.Size = new System.Drawing.Size(121, 24);
-            this.ToplantiListesi.Text = "Toplantı Listesi";
-            // 
             // KullaniciPaneli
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -87,6 +87,7 @@
             this.ClientSize = new System.Drawing.Size(709, 653);
             this.Controls.Add(this.pnlKullanici);
             this.Controls.Add(this.menuStrip1);
+            this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "KullaniciPaneli";
             this.Text = "Toplantı Düzenleme Uygulaması || Kullanıcı Paneli";
@@ -107,5 +108,6 @@
         private ToolStripMenuItem ToplantiSec;
         private Panel pnlKullanici;
         private ToolStripMenuItem ToplantiListesi;
+        private ToolStripMenuItem ToplantiBilgileri;
     }
 }

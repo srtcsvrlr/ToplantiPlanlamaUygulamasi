@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace ToplantiPlanlamaUygulamasi
 {
-    public class Kullanici
+    public class KatilimciBilgileri
     {
-        public string? Name { get; set; }
-        public string? Password { get; set; }
-        
+        public string KatilimciAdi { get; set; }
+        public List<DateTime> SecilenTarihler { get; set; }
     }
 }

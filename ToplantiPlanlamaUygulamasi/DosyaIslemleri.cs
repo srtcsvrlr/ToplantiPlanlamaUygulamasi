@@ -9,17 +9,17 @@ namespace ToplantiPlanlamaUygulamasi
 {
     public static class DosyaIslemleri
     {
-        public static void WriteData(string kullanici, string dosyaIsmi,string Icerik)
+        public static void WriteData( string dosyaIsmi,string Icerik)
         {
-            string kullaniciDosyaYolu = @"dosyalar\" + kullanici;
-            File.WriteAllText(Path.Combine(kullaniciDosyaYolu, dosyaIsmi), Icerik);
+            string dosyaKlasoru = @"dosyalar\";
+            File.WriteAllText(Path.Combine(dosyaKlasoru, dosyaIsmi), Icerik);
 
         }
-        public static string ReadData(string kullanici, string dosyaIsmi)
+        public static string ReadData( string dosyaIsmi)
         {
-            string kullaniciDosyaYolu = @"dosyalar\" + kullanici;
+            string dosyaKlasoru = @"dosyalar\";
 
-            return File.ReadAllText(Path.Combine(kullaniciDosyaYolu, dosyaIsmi));
+            return File.ReadAllText(Path.Combine(dosyaKlasoru, dosyaIsmi));
 
 
         }
