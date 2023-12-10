@@ -16,6 +16,11 @@ C:\Users\srtcs\OneDrive\Masaüstü\Codes\ToplantiPlanlamaUygulamasi\ToplantiPlan
 C:\Users\srtcs\OneDrive\Masaüstü\Codes\ToplantiPlanlamaUygulamasi\ToplantiPlanlamaUygulamasi\obj\Release\net7.0-windows\ToplantiPlanlamaUygulamasi.pdb
 C:\Users\srtcs\OneDrive\Masaüstü\Codes\ToplantiPlanlamaUygulamasi\ToplantiPlanlamaUygulamasi\obj\Release\net7.0-windows\ToplantiPlanlamaUygulamasi.genruntimeconfig.cache
 C:\Users\srtcs\OneDrive\Masaüstü\Codes\ToplantiPlanlamaUygulamasi\ToplantiPlanlamaUygulamasi\obj\Release\net7.0-windows\ref\ToplantiPlanlamaUygulamasi.dll
+C:\Users\srtcs\OneDrive\Masaüstü\Codes\ToplantiPlanlamaUygulamasi\ToplantiPlanlamaUygulamasi\bin\Release\net7.0-windows\Newtonsoft.Json.dll
+C:\Users\srtcs\OneDrive\Masaüstü\Codes\ToplantiPlanlamaUygulamasi\ToplantiPlanlamaUygulamasi\obj\Release\net7.0-windows\ToplantiPlanlamaUygulamasi.KullaniciPaneli.resources
+C:\Users\srtcs\OneDrive\Masaüstü\Codes\ToplantiPlanlamaUygulamasi\ToplantiPlanlamaUygulamasi\obj\Release\net7.0-windows\ToplantiPlanlamaUygulamasi.ToplantiBilgileri.resources
+C:\Users\srtcs\OneDrive\Masaüstü\Codes\ToplantiPlanlamaUygulamasi\ToplantiPlanlamaUygulamasi\obj\Release\net7.0-windows\ToplantiPlanlamaUygulamasi.ToplantiOlustur.resources
+C:\Users\srtcs\OneDrive\Masaüstü\Codes\ToplantiPlanlamaUygulamasi\ToplantiPlanlamaUygulamasi\obj\Release\net7.0-windows\ToplantiPlanlamaUygulamasi.csproj.CopyComplete
 C:\Users\srtcs\OneDrive\Masaüstü\Codes\ToplantiPlanlamaUygulamasi\ToplantiPlanlamaUygulamasi\bin\Release\net7.0-windows\ToplantiPlanlamaUygulamasi.dll.manifest
 C:\Users\srtcs\OneDrive\Masaüstü\Codes\ToplantiPlanlamaUygulamasi\ToplantiPlanlamaUygulamasi\bin\Release\net7.0-windows\ToplantiPlanlamaUygulamasi.application
 C:\Users\srtcs\OneDrive\Masaüstü\Codes\ToplantiPlanlamaUygulamasi\ToplantiPlanlamaUygulamasi\obj\Release\net7.0-windows\ToplantiPlanlamaUygulamasi.dll.manifest

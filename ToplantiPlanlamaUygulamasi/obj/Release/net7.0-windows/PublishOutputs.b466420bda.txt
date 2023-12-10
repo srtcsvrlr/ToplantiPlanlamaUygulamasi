@@ -3,3 +3,4 @@ C:\Users\srtcs\OneDrive\Masaüstü\Codes\ToplantiPlanlamaUygulamasi\ToplantiPlan
 C:\Users\srtcs\OneDrive\Masaüstü\Codes\ToplantiPlanlamaUygulamasi\ToplantiPlanlamaUygulamasi\bin\Release\net7.0-windows\app.publish\ToplantiPlanlamaUygulamasi.deps.json
 C:\Users\srtcs\OneDrive\Masaüstü\Codes\ToplantiPlanlamaUygulamasi\ToplantiPlanlamaUygulamasi\bin\Release\net7.0-windows\app.publish\ToplantiPlanlamaUygulamasi.runtimeconfig.json
 C:\Users\srtcs\OneDrive\Masaüstü\Codes\ToplantiPlanlamaUygulamasi\ToplantiPlanlamaUygulamasi\bin\Release\net7.0-windows\app.publish\ToplantiPlanlamaUygulamasi.pdb
+C:\Users\srtcs\OneDrive\Masaüstü\Codes\ToplantiPlanlamaUygulamasi\ToplantiPlanlamaUygulamasi\bin\Release\net7.0-windows\app.publish\Newtonsoft.Json.dll
