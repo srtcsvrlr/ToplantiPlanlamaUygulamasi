@@ -46,7 +46,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(7, 3, 0, 3);
-            this.menuStrip1.Size = new System.Drawing.Size(709, 30);
+            this.menuStrip1.Size = new System.Drawing.Size(1348, 30);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
@@ -72,11 +72,12 @@
             // 
             // pnlKullanici
             // 
+            this.pnlKullanici.AutoScroll = true;
             this.pnlKullanici.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlKullanici.Location = new System.Drawing.Point(0, 30);
             this.pnlKullanici.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pnlKullanici.Name = "pnlKullanici";
-            this.pnlKullanici.Size = new System.Drawing.Size(709, 623);
+            this.pnlKullanici.Size = new System.Drawing.Size(1348, 691);
             this.pnlKullanici.TabIndex = 2;
             // 
             // KullaniciPaneli
@@ -84,7 +85,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(709, 653);
+            this.ClientSize = new System.Drawing.Size(1348, 721);
             this.Controls.Add(this.pnlKullanici);
             this.Controls.Add(this.menuStrip1);
             this.IsMdiContainer = true;

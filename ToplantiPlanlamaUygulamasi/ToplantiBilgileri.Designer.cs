@@ -197,19 +197,20 @@
             // 
             // txtBaslik
             // 
+            this.txtBaslik.BackColor = System.Drawing.SystemColors.Control;
             this.txtBaslik.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtBaslik.Enabled = false;
             this.txtBaslik.Location = new System.Drawing.Point(92, 70);
             this.txtBaslik.Name = "txtBaslik";
+            this.txtBaslik.ReadOnly = true;
             this.txtBaslik.Size = new System.Drawing.Size(404, 20);
             this.txtBaslik.TabIndex = 1;
             // 
             // rctxtAciklama
             // 
             this.rctxtAciklama.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.rctxtAciklama.Enabled = false;
             this.rctxtAciklama.Location = new System.Drawing.Point(92, 114);
             this.rctxtAciklama.Name = "rctxtAciklama";
+            this.rctxtAciklama.ReadOnly = true;
             this.rctxtAciklama.Size = new System.Drawing.Size(738, 55);
             this.rctxtAciklama.TabIndex = 2;
             this.rctxtAciklama.Text = "";
@@ -279,10 +280,11 @@
             // 
             // txtToplantiKodu
             // 
+            this.txtToplantiKodu.BackColor = System.Drawing.SystemColors.Control;
             this.txtToplantiKodu.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtToplantiKodu.Enabled = false;
             this.txtToplantiKodu.Location = new System.Drawing.Point(705, 70);
             this.txtToplantiKodu.Name = "txtToplantiKodu";
+            this.txtToplantiKodu.ReadOnly = true;
             this.txtToplantiKodu.Size = new System.Drawing.Size(125, 20);
             this.txtToplantiKodu.TabIndex = 33;
             // 

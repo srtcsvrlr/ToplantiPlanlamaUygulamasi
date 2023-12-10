@@ -118,14 +118,21 @@ namespace ToplantiPlanlamaUygulamasi
                     if (_toplanti.UygunToplantiTarihleri.Any(s => s.Equals(currDate)))
                     {
                         Button dynamicButton = new Button();
-                        dynamicButton.Location = new Point(10, 50);
+                        dynamicButton.Location = new Point(0, 40);
                         dynamicButton.Name = "btnKatilimcilar_" + currDate.ToString("yyyy-MM-dd");
                         dynamicButton.Text = "Katılımcılar";
-                        dynamicButton.Size = new System.Drawing.Size(50, 26);
+                        dynamicButton.Size = new System.Drawing.Size(100, 26);
                         dynamicButton.Font = new Font("Arial", 9, FontStyle.Regular);
-
                         dynamicButton.Click += new EventHandler(dynamicButton_Click);
                         ctrl.Controls.Add(dynamicButton);
+
+                        Button dynamicButton2 = new Button();
+                        dynamicButton2.Location = new Point(0, 66);
+                        dynamicButton2.Name = "btnSec_" + currDate.ToString("yyyy-MM-dd");
+                        dynamicButton2.Text = "Seç";
+                        dynamicButton2.Size = new System.Drawing.Size(100, 26);
+                        dynamicButton2.Font = new Font("Arial", 9, FontStyle.Regular);
+                        ctrl.Controls.Add(dynamicButton2);
                     }
                 }
                 currDate = currDate.AddDays(1);
@@ -145,7 +152,7 @@ namespace ToplantiPlanlamaUygulamasi
 
         private void IlgiliTarihtekiKatilimcilariGetir(DateTime selectedDate)
         {
-            MessageBox.Show(selectedDate.ToString("yyyy-MM-dd"));
+            lsbTariheGoreKatilimcilar.Items.Clear();
             foreach (var item in _katilimciBilgileriListesi)
             {
                 if (item.SecilenTarihler.Any(s=>s.Equals(selectedDate)))
