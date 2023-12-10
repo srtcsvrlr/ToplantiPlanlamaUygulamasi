@@ -16,6 +16,9 @@ namespace ToplantiPlanlamaUygulamasi
     {
         public DateTime _currDate { get; set; }
         public Toplanti _toplanti { get; set; }
+
+        List<KatilimciBilgileri> _katilimciBilgileriListesi = new List<KatilimciBilgileri>();
+
         public ToplantiBilgileri()
         {
             InitializeComponent();
@@ -48,6 +51,15 @@ namespace ToplantiPlanlamaUygulamasi
             {
                 lsbKatilimcilar.Items.Add(item);
             }
+
+
+          
+            var katilimciBilgileriListesiJson = DosyaIslemleri.ReadData("KatilimciBilgileri.txt");
+            if (katilimciBilgileriListesiJson.Trim() != string.Empty)
+            {
+                _katilimciBilgileriListesi = JsonConvert.DeserializeObject<List<KatilimciBilgileri>>(katilimciBilgileriListesiJson);
+            }
+
 
             return true;
         }
@@ -124,7 +136,7 @@ namespace ToplantiPlanlamaUygulamasi
         private void dynamicButton_Click(object sender, EventArgs e)
         {
             Button cb = (Button)sender;
-            string strName = cb.AccessibleName;
+            string strName = cb.Name;
             var strTarih = strName.Split("_")[1];
             DateTime selectedDate = Convert.ToDateTime(strTarih);
 
@@ -134,6 +146,13 @@ namespace ToplantiPlanlamaUygulamasi
         private void IlgiliTarihtekiKatilimcilariGetir(DateTime selectedDate)
         {
             MessageBox.Show(selectedDate.ToString("yyyy-MM-dd"));
+            foreach (var item in _katilimciBilgileriListesi)
+            {
+                if (item.SecilenTarihler.Any(s=>s.Equals(selectedDate)))
+                {
+                    lsbTariheGoreKatilimcilar.Items.Add(item.KatilimciAdi);
+                }
+            }
             return;
         }
 

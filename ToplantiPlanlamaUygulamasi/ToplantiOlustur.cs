@@ -111,15 +111,18 @@ namespace ToplantiPlanlamaUygulamasi
                 SecilenTarihler = toplanti.UygunToplantiTarihleri
             };
 
-            List<KatilimciBilgileri> katilimciBilgileriListesi = new List<KatilimciBilgileri>()
+            List<KatilimciBilgileri> katilimciBilgileriListesi = new List<KatilimciBilgileri>();
 
-            var katilimciJson = JsonConvert.SerializeObject(katilimciBilgileri);
-            var katilimciBilgileriListesiJson=DosyaIslemleri.ReadData("ToplantiBilgileri.txt");
+            var katilimciBilgileriListesiJson = DosyaIslemleri.ReadData("KatilimciBilgileri.txt");
             if (katilimciBilgileriListesiJson.Trim() != string.Empty)
             {
-                katilimciBilgileriListesi= JsonConvert.DeserializeObject<List<KatilimciBilgileri>(katilimciBilgileriListesiJson);
+                katilimciBilgileriListesi = JsonConvert.DeserializeObject<List<KatilimciBilgileri>>(katilimciBilgileriListesiJson);
             }
-            DosyaIslemleri.WriteData("ToplantiBilgileri.txt", jsonData);
+
+            katilimciBilgileriListesi.Add(katilimciBilgileri);
+
+            var jsonData2 = JsonConvert.SerializeObject(katilimciBilgileriListesi);
+            DosyaIslemleri.WriteData("KatilimciBilgileri.txt", jsonData2);
 
 
             MessageBox.Show("Toplantı başarıyla oluşturuldu.");
