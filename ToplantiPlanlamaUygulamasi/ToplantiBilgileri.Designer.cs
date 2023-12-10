@@ -47,11 +47,17 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.lsbKatilimcilar = new System.Windows.Forms.ListBox();
-            this.label10 = new System.Windows.Forms.Label();
+            this.lblKatilimciListesi = new System.Windows.Forms.Label();
             this.lsbTariheGoreKatilimcilar = new System.Windows.Forms.ListBox();
-            this.label11 = new System.Windows.Forms.Label();
+            this.lblSecilenTarihteKatilabilecekler = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.txtToplantiKodu = new System.Windows.Forms.TextBox();
+            this.lsbKullanicininSectiğiTarihler = new System.Windows.Forms.ListBox();
+            this.lblSectiginizTarihler = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label14 = new System.Windows.Forms.Label();
+            this.txtToplantiTarihi = new System.Windows.Forms.TextBox();
+            this.btnToplantiKaydet = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -211,7 +217,7 @@
             this.rctxtAciklama.Location = new System.Drawing.Point(92, 114);
             this.rctxtAciklama.Name = "rctxtAciklama";
             this.rctxtAciklama.ReadOnly = true;
-            this.rctxtAciklama.Size = new System.Drawing.Size(738, 55);
+            this.rctxtAciklama.Size = new System.Drawing.Size(499, 55);
             this.rctxtAciklama.TabIndex = 2;
             this.rctxtAciklama.Text = "";
             // 
@@ -242,32 +248,32 @@
             this.lsbKatilimcilar.Size = new System.Drawing.Size(149, 144);
             this.lsbKatilimcilar.TabIndex = 28;
             // 
-            // label10
+            // lblKatilimciListesi
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(907, 72);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(111, 20);
-            this.label10.TabIndex = 29;
-            this.label10.Text = "Katılımcı Listesi";
+            this.lblKatilimciListesi.AutoSize = true;
+            this.lblKatilimciListesi.Location = new System.Drawing.Point(907, 72);
+            this.lblKatilimciListesi.Name = "lblKatilimciListesi";
+            this.lblKatilimciListesi.Size = new System.Drawing.Size(111, 20);
+            this.lblKatilimciListesi.TabIndex = 29;
+            this.lblKatilimciListesi.Text = "Katılımcı Listesi";
             // 
             // lsbTariheGoreKatilimcilar
             // 
             this.lsbTariheGoreKatilimcilar.FormattingEnabled = true;
             this.lsbTariheGoreKatilimcilar.ItemHeight = 20;
-            this.lsbTariheGoreKatilimcilar.Location = new System.Drawing.Point(908, 292);
+            this.lsbTariheGoreKatilimcilar.Location = new System.Drawing.Point(908, 279);
             this.lsbTariheGoreKatilimcilar.Name = "lsbTariheGoreKatilimcilar";
             this.lsbTariheGoreKatilimcilar.Size = new System.Drawing.Size(149, 144);
             this.lsbTariheGoreKatilimcilar.TabIndex = 30;
             // 
-            // label11
+            // lblSecilenTarihteKatilabilecekler
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(907, 256);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(208, 20);
-            this.label11.TabIndex = 31;
-            this.label11.Text = "Seçilen Tarihte katılabilecekler";
+            this.lblSecilenTarihteKatilabilecekler.AutoSize = true;
+            this.lblSecilenTarihteKatilabilecekler.Location = new System.Drawing.Point(907, 256);
+            this.lblSecilenTarihteKatilabilecekler.Name = "lblSecilenTarihteKatilabilecekler";
+            this.lblSecilenTarihteKatilabilecekler.Size = new System.Drawing.Size(208, 20);
+            this.lblSecilenTarihteKatilabilecekler.TabIndex = 31;
+            this.lblSecilenTarihteKatilabilecekler.Text = "Seçilen Tarihte katılabilecekler";
             // 
             // label12
             // 
@@ -288,16 +294,78 @@
             this.txtToplantiKodu.Size = new System.Drawing.Size(125, 20);
             this.txtToplantiKodu.TabIndex = 33;
             // 
+            // lsbKullanicininSectiğiTarihler
+            // 
+            this.lsbKullanicininSectiğiTarihler.FormattingEnabled = true;
+            this.lsbKullanicininSectiğiTarihler.ItemHeight = 20;
+            this.lsbKullanicininSectiğiTarihler.Location = new System.Drawing.Point(908, 476);
+            this.lsbKullanicininSectiğiTarihler.Name = "lsbKullanicininSectiğiTarihler";
+            this.lsbKullanicininSectiğiTarihler.Size = new System.Drawing.Size(149, 144);
+            this.lsbKullanicininSectiğiTarihler.TabIndex = 34;
+            // 
+            // lblSectiginizTarihler
+            // 
+            this.lblSectiginizTarihler.AutoSize = true;
+            this.lblSectiginizTarihler.Location = new System.Drawing.Point(908, 443);
+            this.lblSectiginizTarihler.Name = "lblSectiginizTarihler";
+            this.lblSectiginizTarihler.Size = new System.Drawing.Size(125, 20);
+            this.lblSectiginizTarihler.TabIndex = 35;
+            this.lblSectiginizTarihler.Text = "Seçtiğiniz Tarihler";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(1069, 522);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(8, 8);
+            this.button1.TabIndex = 36;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(594, 119);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(105, 20);
+            this.label14.TabIndex = 37;
+            this.label14.Text = "Toplantı Tarihi:";
+            // 
+            // txtToplantiTarihi
+            // 
+            this.txtToplantiTarihi.BackColor = System.Drawing.SystemColors.Control;
+            this.txtToplantiTarihi.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtToplantiTarihi.Location = new System.Drawing.Point(705, 120);
+            this.txtToplantiTarihi.Name = "txtToplantiTarihi";
+            this.txtToplantiTarihi.ReadOnly = true;
+            this.txtToplantiTarihi.Size = new System.Drawing.Size(125, 20);
+            this.txtToplantiTarihi.TabIndex = 38;
+            // 
+            // btnToplantiKaydet
+            // 
+            this.btnToplantiKaydet.Location = new System.Drawing.Point(908, 632);
+            this.btnToplantiKaydet.Name = "btnToplantiKaydet";
+            this.btnToplantiKaydet.Size = new System.Drawing.Size(149, 38);
+            this.btnToplantiKaydet.TabIndex = 39;
+            this.btnToplantiKaydet.Text = "Kaydet";
+            this.btnToplantiKaydet.UseVisualStyleBackColor = true;
+            this.btnToplantiKaydet.Click += new System.EventHandler(this.btnToplantiKaydet_Click);
+            // 
             // ToplantiBilgileri
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1118, 664);
+            this.Controls.Add(this.btnToplantiKaydet);
+            this.Controls.Add(this.txtToplantiTarihi);
+            this.Controls.Add(this.label14);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.lblSectiginizTarihler);
+            this.Controls.Add(this.lsbKullanicininSectiğiTarihler);
             this.Controls.Add(this.txtToplantiKodu);
             this.Controls.Add(this.label12);
-            this.Controls.Add(this.label11);
+            this.Controls.Add(this.lblSecilenTarihteKatilabilecekler);
             this.Controls.Add(this.lsbTariheGoreKatilimcilar);
-            this.Controls.Add(this.label10);
+            this.Controls.Add(this.lblKatilimciListesi);
             this.Controls.Add(this.lsbKatilimcilar);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.lblAciklama);
@@ -347,10 +415,16 @@
         private Label label6;
         private Label label9;
         private ListBox lsbKatilimcilar;
-        private Label label10;
+        private Label lblKatilimciListesi;
         private ListBox lsbTariheGoreKatilimcilar;
-        private Label label11;
+        private Label lblSecilenTarihteKatilabilecekler;
         private Label label12;
         private TextBox txtToplantiKodu;
+        private ListBox lsbKullanicininSectiğiTarihler;
+        private Label lblSectiginizTarihler;
+        private Button button1;
+        private Label label14;
+        private TextBox txtToplantiTarihi;
+        private Button btnToplantiKaydet;
     }
 }

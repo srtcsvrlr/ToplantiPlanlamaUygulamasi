@@ -8,7 +8,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace ToplantiPlanlamaUygulamasi
 {
@@ -16,12 +15,16 @@ namespace ToplantiPlanlamaUygulamasi
     {
         public DateTime _currDate { get; set; }
         public Toplanti _toplanti { get; set; }
+        public Kullanici _kullanici { get; set; }
+
+        public bool toplantiTanimlanmis { get; set; } = false;
 
         List<KatilimciBilgileri> _katilimciBilgileriListesi = new List<KatilimciBilgileri>();
 
-        public ToplantiBilgileri()
+        public ToplantiBilgileri(Kullanici kullanici)
         {
             InitializeComponent();
+            _kullanici = kullanici;
         }
 
         private void ToplantiBilgileri_Load(object sender, EventArgs e)
@@ -47,17 +50,51 @@ namespace ToplantiPlanlamaUygulamasi
             txtBaslik.Text = _toplanti.Baslik;
             rctxtAciklama.Text = _toplanti.Aciklama;
             txtToplantiKodu.Text = _toplanti.ToplantiKodu;
-            foreach (var item in _toplanti.KatilimciListesi)
+
+            lsbKatilimcilar.Items.Clear();
+            if (_toplanti.ToplantiTarihi.HasValue)
             {
-                lsbKatilimcilar.Items.Add(item);
+                txtToplantiTarihi.Text = _toplanti.ToplantiTarihi?.ToString("yyyy-MM-dd");
+                toplantiTanimlanmis = true;
+
+                foreach (var item in _toplanti.NihaiKatilimciListesi)
+                {
+                    lsbKatilimcilar.Items.Add(item);
+                }
+                lsbKullanicininSectiğiTarihler.Visible = false;
+                lsbTariheGoreKatilimcilar.Visible = false;
+                btnToplantiKaydet.Visible = false;
+                lblSecilenTarihteKatilabilecekler.Visible = false;
+                lblSectiginizTarihler.Visible = false;
+            }
+            else
+            {
+
+                if (_kullanici.Name != "yonetici") {
+                    btnToplantiKaydet.Visible = false;
+                }
+
+                foreach (var item in _toplanti.KatilimciListesi)
+                {
+                    lsbKatilimcilar.Items.Add(item);
+                }
             }
 
-
-          
             var katilimciBilgileriListesiJson = DosyaIslemleri.ReadData("KatilimciBilgileri.txt");
             if (katilimciBilgileriListesiJson.Trim() != string.Empty)
             {
                 _katilimciBilgileriListesi = JsonConvert.DeserializeObject<List<KatilimciBilgileri>>(katilimciBilgileriListesiJson);
+            }
+
+
+            if (_katilimciBilgileriListesi.Any(s => s.KatilimciAdi.Equals(_kullanici.Name)))
+            {
+                var loginOlanKullaniciSecilenTarihler = _katilimciBilgileriListesi.First(s => s.KatilimciAdi.Equals(_kullanici.Name));
+                lsbKullanicininSectiğiTarihler.Items.Clear();
+                foreach (var item in loginOlanKullaniciSecilenTarihler.SecilenTarihler)
+                {
+                    lsbKullanicininSectiğiTarihler.Items.Add(item.ToString("yyyy-MM-dd"));
+                }
             }
 
 
@@ -113,27 +150,83 @@ namespace ToplantiPlanlamaUygulamasi
                     dynamiclabel.Text = currDate.ToString("dd");
                     dynamiclabel.Size = new System.Drawing.Size(900, 26);
                     dynamiclabel.Font = new Font("Arial", 9, FontStyle.Regular);
-                    ctrl.Controls.Add(dynamiclabel);
-                    // uygun toplantı tarihlerindeki katılımcıları görmek için buton ekle
-                    if (_toplanti.UygunToplantiTarihleri.Any(s => s.Equals(currDate)))
+                    if (_toplanti.ToplantiTarihi.Equals(currDate))
                     {
-                        Button dynamicButton = new Button();
+                        ctrl.BackColor = Color.Blue;
+                    }
+                    ctrl.Controls.Add(dynamiclabel);
+
+                    // uygun toplantı tarihlerindeki katılımcıları görmek için buton ekle
+                    if (!toplantiTanimlanmis && _toplanti.UygunToplantiTarihleri.Any(s => s.Equals(currDate)))
+                    {
+                        System.Windows.Forms.Button dynamicButton = new System.Windows.Forms.Button();
                         dynamicButton.Location = new Point(0, 40);
                         dynamicButton.Name = "btnKatilimcilar_" + currDate.ToString("yyyy-MM-dd");
                         dynamicButton.Text = "Katılımcılar";
                         dynamicButton.Size = new System.Drawing.Size(100, 26);
                         dynamicButton.Font = new Font("Arial", 9, FontStyle.Regular);
-                        dynamicButton.Click += new EventHandler(dynamicButton_Click);
+                        dynamicButton.Click += new EventHandler(katilimciGosterButton_Click);
                         ctrl.Controls.Add(dynamicButton);
+                        if (!_kullanici.Name.Equals("yonetici"))
+                        {
+                            var loginOlanKullaniciSecilenTarihler = _katilimciBilgileriListesi.FirstOrDefault(s => s.KatilimciAdi.Equals(_kullanici.Name));
+                            if (loginOlanKullaniciSecilenTarihler != null)
+                            {
+                                if (loginOlanKullaniciSecilenTarihler.SecilenTarihler.Any(s => s.Equals(currDate)))
+                                {
+                                    // kullanici ilgili tarihi seçmemişse göster
+                                    System.Windows.Forms.Button dynamicButton2 = new System.Windows.Forms.Button();
+                                    dynamicButton2.Location = new Point(0, 66);
+                                    dynamicButton2.Name = "btnKaldır_" + currDate.ToString("yyyy-MM-dd");
+                                    dynamicButton2.Text = "Kaldır";
+                                    dynamicButton2.Size = new System.Drawing.Size(100, 26);
+                                    dynamicButton2.Font = new Font("Arial", 9, FontStyle.Regular);
 
-                        // kullanici ilgili tarihi seçmemişse göster
-                        Button dynamicButton2 = new Button();
-                        dynamicButton2.Location = new Point(0, 66);
-                        dynamicButton2.Name = "btnSec_" + currDate.ToString("yyyy-MM-dd");
-                        dynamicButton2.Text = "Seç";
-                        dynamicButton2.Size = new System.Drawing.Size(100, 26);
-                        dynamicButton2.Font = new Font("Arial", 9, FontStyle.Regular);
-                        ctrl.Controls.Add(dynamicButton2);
+                                    dynamicButton2.Click += new EventHandler(tarihiKaldir_Click);
+                                    ctrl.Controls.Add(dynamicButton2);
+                                }
+                                else
+                                {
+                                    // kullanici ilgili tarihi seçmemişse göster
+                                    Button dynamicButton2 = new Button();
+                                    dynamicButton2.Location = new Point(0, 66);
+                                    dynamicButton2.Name = "btnSec_" + currDate.ToString("yyyy-MM-dd");
+                                    dynamicButton2.Text = "Seç";
+                                    dynamicButton2.Size = new System.Drawing.Size(100, 26);
+                                    dynamicButton2.Font = new Font("Arial", 9, FontStyle.Regular);
+                                    dynamicButton2.Click += new EventHandler(tarihiEkle_Click);
+                                    ctrl.Controls.Add(dynamicButton2);
+                                }
+
+                            }
+                            else
+                            {
+                                // kullanici ilgili tarihi seçmemişse göster
+                                Button dynamicButton2 = new Button();
+                                dynamicButton2.Location = new Point(0, 66);
+                                dynamicButton2.Name = "btnSec_" + currDate.ToString("yyyy-MM-dd");
+                                dynamicButton2.Text = "Seç";
+                                dynamicButton2.Size = new System.Drawing.Size(100, 26);
+                                dynamicButton2.Font = new Font("Arial", 9, FontStyle.Regular);
+                                dynamicButton2.Click += new EventHandler(tarihiEkle_Click);
+                                ctrl.Controls.Add(dynamicButton2);
+
+
+                            }
+                        }
+                        else
+                        {
+                            // kullanici ilgili tarihi seçmemişse göster
+                            Button dynamicButton3 = new Button();
+                            dynamicButton3.Location = new Point(0, 66);
+                            dynamicButton3.Name = "btnSec_" + currDate.ToString("yyyy-MM-dd");
+                            dynamicButton3.Text = "Seç";
+                            dynamicButton3.Size = new System.Drawing.Size(100, 26);
+                            dynamicButton3.Font = new Font("Arial", 9, FontStyle.Regular);
+                            dynamicButton3.Click += new EventHandler(toplantiTarihiBelirle_Click);
+                            ctrl.Controls.Add(dynamicButton3);
+                        }
+
                     }
                 }
                 currDate = currDate.AddDays(1);
@@ -141,7 +234,96 @@ namespace ToplantiPlanlamaUygulamasi
             }
         }
 
-        private void dynamicButton_Click(object sender, EventArgs e)
+        private void toplantiTarihiBelirle_Click(object? sender, EventArgs e)
+        {
+            Button cb = (Button)sender;
+            string strName = cb.Name;
+            var strTarih = strName.Split("_")[1];
+            DateTime selectedDate = Convert.ToDateTime(strTarih);
+            MessageBox.Show("Seçtiğiniz Toplantı Tarihi: " + strTarih + " !!");
+            txtToplantiTarihi.Text = strTarih;
+
+        }
+
+        private void tarihiEkle_Click(object? sender, EventArgs e)
+        {
+            Button cb = (Button)sender;
+            string strName = cb.Name;
+            var strTarih = strName.Split("_")[1];
+            DateTime selectedDate = Convert.ToDateTime(strTarih);
+
+
+
+            List<KatilimciBilgileri> katilimciBilgileriListesi = new List<KatilimciBilgileri>();
+
+            var katilimciBilgileriListesiJson = DosyaIslemleri.ReadData("KatilimciBilgileri.txt");
+            if (katilimciBilgileriListesiJson.Trim() != string.Empty)
+            {
+                katilimciBilgileriListesi = JsonConvert.DeserializeObject<List<KatilimciBilgileri>>(katilimciBilgileriListesiJson);
+            }
+
+            var katilimciBilgileri = katilimciBilgileriListesi.FirstOrDefault(s => s.KatilimciAdi.Equals(_kullanici.Name));
+
+            if (katilimciBilgileri != null)
+            {
+                katilimciBilgileri.SecilenTarihler.Add(selectedDate);
+                katilimciBilgileriListesi.
+                    Remove(katilimciBilgileriListesi.First(s => s.KatilimciAdi == _kullanici.Name));
+                katilimciBilgileriListesi.Add(katilimciBilgileri);
+            }
+            else
+            {
+                katilimciBilgileri = new KatilimciBilgileri()
+                {
+                    KatilimciAdi = _kullanici.Name,
+                    SecilenTarihler = new List<DateTime> { selectedDate }
+                };
+
+                katilimciBilgileriListesi.Add(katilimciBilgileri);
+            }
+
+            var jsonData2 = JsonConvert.SerializeObject(katilimciBilgileriListesi);
+            DosyaIslemleri.WriteData("KatilimciBilgileri.txt", jsonData2);
+            _katilimciBilgileriListesi = katilimciBilgileriListesi;
+            if (!ToplantiBilgileriniGetir())
+                return;
+            KutulariDoldur(_currDate);
+
+        }
+
+        private void tarihiKaldir_Click(object? sender, EventArgs e)
+        {
+            Button cb = (Button)sender;
+            string strName = cb.Name;
+            var strTarih = strName.Split("_")[1];
+            DateTime selectedDate = Convert.ToDateTime(strTarih);
+            List<KatilimciBilgileri> katilimciBilgileriListesi = new List<KatilimciBilgileri>();
+
+            var katilimciBilgileriListesiJson = DosyaIslemleri.ReadData("KatilimciBilgileri.txt");
+            if (katilimciBilgileriListesiJson.Trim() != string.Empty)
+            {
+                katilimciBilgileriListesi = JsonConvert.DeserializeObject<List<KatilimciBilgileri>>(katilimciBilgileriListesiJson);
+            }
+
+            var katilimciBilgileri = katilimciBilgileriListesi.First(s => s.KatilimciAdi.Equals(_kullanici.Name));
+
+            if (katilimciBilgileri != null)
+            {
+                katilimciBilgileri.SecilenTarihler.Remove(selectedDate);
+                katilimciBilgileriListesi.
+                    Remove(katilimciBilgileriListesi.First(s => s.KatilimciAdi == _kullanici.Name));
+                katilimciBilgileriListesi.Add(katilimciBilgileri);
+            }
+
+            var jsonData2 = JsonConvert.SerializeObject(katilimciBilgileriListesi);
+            DosyaIslemleri.WriteData("KatilimciBilgileri.txt", jsonData2);
+            _katilimciBilgileriListesi = katilimciBilgileriListesi;
+            if (!ToplantiBilgileriniGetir())
+                return;
+            KutulariDoldur(_currDate);
+        }
+
+        private void katilimciGosterButton_Click(object sender, EventArgs e)
         {
             Button cb = (Button)sender;
             string strName = cb.Name;
@@ -156,7 +338,7 @@ namespace ToplantiPlanlamaUygulamasi
             lsbTariheGoreKatilimcilar.Items.Clear();
             foreach (var item in _katilimciBilgileriListesi)
             {
-                if (item.SecilenTarihler.Any(s=>s.Equals(selectedDate)))
+                if (item.SecilenTarihler.Any(s => s.Equals(selectedDate)))
                 {
                     lsbTariheGoreKatilimcilar.Items.Add(item.KatilimciAdi);
                 }
@@ -175,5 +357,67 @@ namespace ToplantiPlanlamaUygulamasi
             _currDate = _currDate.AddMonths(1);
             KutulariDoldur(_currDate);
         }
+
+        private void btnToplantiKaydet_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtToplantiTarihi.Text.Trim()))
+            {
+                MessageBox.Show("Uygun Tarihler içerisinden Toplantı Tarihini seçiniz!");
+                return;
+            }
+            if (_toplanti.NihaiKatilimciListesi == null)
+            {
+                var confirmResult = MessageBox.Show("Seçtiğiniz toplantı tarihinde uygun olmayan katılımcılar var! Devam etmek istiyor musunuz?",
+                                    "Uyarı!!",
+                                    MessageBoxButtons.YesNo);
+                if (confirmResult != DialogResult.Yes)
+                {
+                    return;
+                }
+            }
+            else
+            {
+                if (_toplanti.NihaiKatilimciListesi.Count != _toplanti.KatilimciListesi.Count)
+                {
+                    var confirmResult = MessageBox.Show("Seçtiğiniz toplantı tarihinde uygun olmayan katılımcılar var! Devam etmek istiyor musunuz?",
+                                         "Uyarı!!",
+                                         MessageBoxButtons.YesNo);
+                    if (confirmResult != DialogResult.Yes)
+                    {
+                        return;
+                    }
+                }
+            }
+
+
+
+            _toplanti.ToplantiTarihi = Convert.ToDateTime(txtToplantiTarihi.Text);
+
+            List<KatilimciBilgileri> katilimciBilgileriListesi = new List<KatilimciBilgileri>();
+
+            var katilimciBilgileriListesiJson = DosyaIslemleri.ReadData("KatilimciBilgileri.txt");
+            if (katilimciBilgileriListesiJson.Trim() != string.Empty)
+            {
+                katilimciBilgileriListesi = JsonConvert.DeserializeObject<List<KatilimciBilgileri>>(katilimciBilgileriListesiJson);
+            }
+            _toplanti.NihaiKatilimciListesi = new List<string>();
+            foreach (var katilimci in katilimciBilgileriListesi)
+            {
+
+                if (katilimci.SecilenTarihler.Any(s => s.Equals(_toplanti.ToplantiTarihi)))
+                {
+
+                    _toplanti.NihaiKatilimciListesi.Add(katilimci.KatilimciAdi);
+                }
+            }
+
+            var jsonData = JsonConvert.SerializeObject(_toplanti);
+            DosyaIslemleri.WriteData("ToplantiBilgileri.txt", jsonData);
+
+            MessageBox.Show("Toplantı Tarihi başarıyla kaydedildi ve toplantı bilgileri kullanıcılara gönderildi!");
+            this.Hide();
+        }
+
+
     }
 }

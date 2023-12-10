@@ -1,1 +1,1 @@
-{"Name":"Ali","Password":"123ali"}
+{"Name":"yonetici","Password":"yonetici123"}

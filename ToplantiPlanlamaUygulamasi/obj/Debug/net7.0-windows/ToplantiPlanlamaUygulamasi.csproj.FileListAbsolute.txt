@@ -20,5 +20,4 @@ C:\Users\srtcs\OneDrive\Masaüstü\Codes\ToplantiPlanlamaUygulamasi\ToplantiPlan
 C:\Users\srtcs\OneDrive\Masaüstü\Codes\ToplantiPlanlamaUygulamasi\ToplantiPlanlamaUygulamasi\obj\Debug\net7.0-windows\ToplantiPlanlamaUygulamasi.csproj.CopyComplete
 C:\Users\srtcs\OneDrive\Masaüstü\Codes\ToplantiPlanlamaUygulamasi\ToplantiPlanlamaUygulamasi\obj\Debug\net7.0-windows\ToplantiPlanlamaUygulamasi.KullaniciPaneli.resources
 C:\Users\srtcs\OneDrive\Masaüstü\Codes\ToplantiPlanlamaUygulamasi\ToplantiPlanlamaUygulamasi\obj\Debug\net7.0-windows\ToplantiPlanlamaUygulamasi.ToplantiOlustur.resources
-C:\Users\srtcs\OneDrive\Masaüstü\Codes\ToplantiPlanlamaUygulamasi\ToplantiPlanlamaUygulamasi\obj\Debug\net7.0-windows\ToplantiPlanlamaUygulamasi.ToplantiSec.resources
 C:\Users\srtcs\OneDrive\Masaüstü\Codes\ToplantiPlanlamaUygulamasi\ToplantiPlanlamaUygulamasi\obj\Debug\net7.0-windows\ToplantiPlanlamaUygulamasi.ToplantiBilgileri.resources

@@ -12,6 +12,7 @@ namespace ToplantiPlanlamaUygulamasi
         public static void WriteData( string dosyaIsmi,string Icerik)
         {
             string dosyaKlasoru = @"dosyalar\";
+           
             File.WriteAllText(Path.Combine(dosyaKlasoru, dosyaIsmi), Icerik);
 
         }

@@ -15,11 +15,13 @@ namespace ToplantiPlanlamaUygulamasi
         public string Baslik { get; set; }
         public string Aciklama { get; set; }
         public string ToplantiKodu { get; set; }
-        public string ToplantiTarihi { get; set; }
+        public DateTime? ToplantiTarihi { get; set; }
         
         public List<string> KatilimciListesi { get; set; }
 
         public List<DateTime> UygunToplantiTarihleri { get; set; }
+
+        public List<string> NihaiKatilimciListesi { get; set; }
 
     }
 }

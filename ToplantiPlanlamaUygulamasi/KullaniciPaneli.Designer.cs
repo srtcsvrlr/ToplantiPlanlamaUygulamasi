@@ -31,7 +31,6 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.ToplantiBilgileri = new System.Windows.Forms.ToolStripMenuItem();
             this.ToplantiOlustur = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToplantiSec = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlKullanici = new System.Windows.Forms.Panel();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -41,8 +40,7 @@
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ToplantiBilgileri,
-            this.ToplantiOlustur,
-            this.ToplantiSec});
+            this.ToplantiOlustur});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(7, 3, 0, 3);
@@ -63,12 +61,6 @@
             this.ToplantiOlustur.Size = new System.Drawing.Size(128, 24);
             this.ToplantiOlustur.Text = "Toplantı Oluştur";
             this.ToplantiOlustur.Click += new System.EventHandler(this.toplantiOlusturToolStripMenuItem_Click);
-            // 
-            // ToplantiSec
-            // 
-            this.ToplantiSec.Name = "ToplantiSec";
-            this.ToplantiSec.Size = new System.Drawing.Size(104, 24);
-            this.ToplantiSec.Text = "Toplantı Seç";
             // 
             // pnlKullanici
             // 
@@ -92,6 +84,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "KullaniciPaneli";
             this.Text = "Toplantı Düzenleme Uygulaması || Kullanıcı Paneli";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.KullaniciPaneli_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -106,7 +99,6 @@
         private ToolStripMenuItem toplantiOlusturToolStripMenuItem;
         private ToolStripMenuItem toplantıSeçToolStripMenuItem;
         private ToolStripMenuItem ToplantiOlustur;
-        private ToolStripMenuItem ToplantiSec;
         private Panel pnlKullanici;
         private ToolStripMenuItem ToplantiListesi;
         private ToolStripMenuItem ToplantiBilgileri;

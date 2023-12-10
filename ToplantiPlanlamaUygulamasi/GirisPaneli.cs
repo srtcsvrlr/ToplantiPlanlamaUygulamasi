@@ -41,23 +41,65 @@ namespace ToplantiPlanlamaUygulamasi
 
         private void btnGiris_Click_1(object sender, EventArgs e)
         {
-            //lblGiris.Text = string.Empty;
-            //string kullaniciAdi = txtKullaniciAdi.Text;
-            //string sifre = txtSifre.Text;
-            ////WriteData(kullaniciAdi , sifre);
-            //string jsonKullaniciBilgisi = ReadUserData();
-            //Kullanici user = JsonConvert.DeserializeObject<Kullanici>(jsonKullaniciBilgisi);
+            lblGiris.Text = string.Empty;
+            string kullaniciAdi = txtKullaniciAdi.Text;
+            string sifre = txtSifre.Text;
 
-            //if (!(kullaniciAdi == user.Name && sifre == user.Password))
-            //{
-            //    lblGiris.Text = "Kullanici Adý veya Þifre Hatalý!";
-            //    return;
-            //}
-            this.Hide();
 
-            KullaniciPaneli kullaniciPaneli = new KullaniciPaneli();
-            kullaniciPaneli.Show();
+            if (kullaniciAdi == "yonetici")
+            {
+                string jsonKullaniciBilgisi = ReadUserData();
+                Kullanici kullanici = JsonConvert.DeserializeObject<Kullanici>(jsonKullaniciBilgisi);
 
+                if (!(kullaniciAdi == kullanici.Name && sifre == kullanici.Password))
+                {
+                    lblGiris.Text = "Kullanici Adý veya Þifre Hatalý!";
+                    return;
+                }
+
+                this.Hide();
+                KullaniciPaneli kullaniciPaneli = new KullaniciPaneli(kullanici);
+                kullaniciPaneli.Show();
+            }
+            else {
+                string jsonToplantiBilgileri = ReadToplantiBilgileri();
+
+               var toplanti = JsonConvert.DeserializeObject<Toplanti>(jsonToplantiBilgileri);
+                if (toplanti == null)
+                {
+                    MessageBox.Show("Toplanti Bilgileri Alýnamadý.");
+                    return;
+                }
+
+                if (!toplanti.KatilimciListesi.Any(s => s.Equals(kullaniciAdi)))
+                {
+                    MessageBox.Show("Toplanti katýlýmcýlarý arasýnda deðilsiniz!");
+                    return;
+
+                }
+
+                if (toplanti.ToplantiKodu!=sifre)
+                {
+                    MessageBox.Show("Toplanti kodunu yanlýþ girdiniz!");
+                    return;
+
+                }
+                Kullanici kullanici = new Kullanici();
+                kullanici.Name = kullaniciAdi;
+
+                this.Hide();
+                KullaniciPaneli kullaniciPaneli = new KullaniciPaneli(kullanici);
+                kullaniciPaneli.Show();
+
+
+            }
+
+           
+
+        }
+        public string ReadToplantiBilgileri()
+        {
+            return DosyaIslemleri.ReadData("ToplantiBilgileri.txt");
         }
     }
 }

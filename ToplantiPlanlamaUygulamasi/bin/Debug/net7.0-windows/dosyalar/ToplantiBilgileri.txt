@@ -1,1 +1,1 @@
-{"Baslik":"Toplanti-4","Aciklama":"Toplanti-4 Aciklama","ToplantiKodu":"MAU672GVN5","ToplantiTarihi":null,"KatilimciListesi":["default","Ali","Ayse"],"UygunToplantiTarihleri":["2023-12-19T00:00:00","2023-12-18T00:00:00","2023-12-26T00:00:00"]}
+{"Baslik":"test1","Aciklama":"test1 aciklama","ToplantiKodu":"8EO0CCLKNS","ToplantiTarihi":"2023-12-29T00:00:00","KatilimciListesi":["ali","ayse","yonetici"],"UygunToplantiTarihleri":["2023-12-27T00:00:00","2023-12-28T00:00:00","2023-12-29T00:00:00"],"NihaiKatilimciListesi":["yonetici","ali"]}

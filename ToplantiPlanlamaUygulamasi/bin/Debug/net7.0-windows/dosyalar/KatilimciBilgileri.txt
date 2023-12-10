@@ -1,3 +1,1 @@
-[{"KatilimciAdi":"default","SecilenTarihler":["2023-12-19T00:00:00","2023-12-18T00:00:00","2023-12-26T00:00:00"]},
-{"KatilimciAdi":"ali","SecilenTarihler":["2023-12-19T00:00:00"]}
-]
+[{"KatilimciAdi":"yonetici","SecilenTarihler":["2023-12-27T00:00:00","2023-12-28T00:00:00","2023-12-29T00:00:00"]},{"KatilimciAdi":"ali","SecilenTarihler":["2023-12-27T00:00:00","2023-12-28T00:00:00","2023-12-29T00:00:00"]}]

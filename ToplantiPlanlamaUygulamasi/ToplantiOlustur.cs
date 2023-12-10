@@ -96,28 +96,29 @@ namespace ToplantiPlanlamaUygulamasi
                 toplanti.UygunToplantiTarihleri.Add(date);
             }
 
+            toplanti.KatilimciListesi.Add("yonetici");
             foreach (var item in lsbKatilimcilar.Items)
             {
                 var katilimci = item.ToString();
                 toplanti.KatilimciListesi.Add(katilimci);
             }
-
+            toplanti.NihaiKatilimciListesi = new List<string>() { "yonetici" };
             var jsonData = JsonConvert.SerializeObject(toplanti);
             DosyaIslemleri.WriteData("ToplantiBilgileri.txt", jsonData);
 
             KatilimciBilgileri katilimciBilgileri = new KatilimciBilgileri()
             {
-                KatilimciAdi = "default",
+                KatilimciAdi = "yonetici",
                 SecilenTarihler = toplanti.UygunToplantiTarihleri
             };
 
             List<KatilimciBilgileri> katilimciBilgileriListesi = new List<KatilimciBilgileri>();
 
-            var katilimciBilgileriListesiJson = DosyaIslemleri.ReadData("KatilimciBilgileri.txt");
-            if (katilimciBilgileriListesiJson.Trim() != string.Empty)
-            {
-                katilimciBilgileriListesi = JsonConvert.DeserializeObject<List<KatilimciBilgileri>>(katilimciBilgileriListesiJson);
-            }
+            //var katilimciBilgileriListesiJson = DosyaIslemleri.ReadData("KatilimciBilgileri.txt");
+            //if (katilimciBilgileriListesiJson.Trim() != string.Empty)
+            //{
+            //    katilimciBilgileriListesi = JsonConvert.DeserializeObject<List<KatilimciBilgileri>>(katilimciBilgileriListesiJson);
+            //}
 
             katilimciBilgileriListesi.Add(katilimciBilgileri);
 
@@ -130,15 +131,6 @@ namespace ToplantiPlanlamaUygulamasi
 
             this.Hide();
 
-            //KullaniciPaneli kullaniciPaneli = new KullaniciPaneli();
-            //kullaniciPaneli.Show();
-
-            //ToplantiBilgileri objForm = new ToplantiBilgileri();
-            //objForm.TopLevel = false;
-            //kullaniciPaneli.Controls["pnlKullanici"].Controls.Add(objForm);
-            //objForm.FormBorderStyle = FormBorderStyle.None;
-            //objForm.Dock = DockStyle.Fill;
-            //objForm.Show();
         }
 
         private void btnKatimciEkle_Click(object sender, EventArgs e)
