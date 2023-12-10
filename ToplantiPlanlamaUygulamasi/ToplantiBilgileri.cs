@@ -126,6 +126,7 @@ namespace ToplantiPlanlamaUygulamasi
                         dynamicButton.Click += new EventHandler(dynamicButton_Click);
                         ctrl.Controls.Add(dynamicButton);
 
+                        // kullanici ilgili tarihi seçmemişse göster
                         Button dynamicButton2 = new Button();
                         dynamicButton2.Location = new Point(0, 66);
                         dynamicButton2.Name = "btnSec_" + currDate.ToString("yyyy-MM-dd");
